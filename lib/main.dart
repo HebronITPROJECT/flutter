@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:virtual_app/preview.dart';
-
+import 'package:virtual_app/sign_in.dart';
+import 'package:virtual_app/sign_up.dart';
 
 void main() => runApp(LoginPage());
 
@@ -31,17 +31,19 @@ class FirstWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Scaffold(
-        body: SingleChildScrollView(
-          child: Container(
+        body: 
+        //SingleChildScrollView(
+          //child:
+           Container(
             decoration: BoxDecoration(
-                gradient: LinearGradient(
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                    colors: [Colors.indigoAccent[100], Colors.indigoAccent]),
-              ),
+              gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: [Colors.indigoAccent[100], Colors.indigoAccent]),
+            ),
             width: MediaQuery.of(context).size.width,
             child: Container(
-              margin: EdgeInsets.only(top: 100),
+              margin: EdgeInsets.only(top: 120),
               height: MediaQuery.of(context).size.height,
               child: Column(
                 // mainAxisAlignment: MainAxisAlignment.center,
@@ -117,7 +119,7 @@ class FirstWidget extends StatelessWidget {
                         ),
                       ),
                       Container(
-                        margin: EdgeInsets.only(top: 100),
+                        margin: EdgeInsets.only(top: 110),
                         child: Align(
                           alignment: Alignment.bottomLeft,
                           child: SizedBox(
@@ -132,7 +134,7 @@ class FirstWidget extends StatelessWidget {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => PreviewPage()));
+                                        builder: (context) => SignInPage()));
                                 // }
                               },
                               shape: RoundedRectangleBorder(
@@ -154,7 +156,7 @@ class FirstWidget extends StatelessWidget {
                         ),
                       ),
                       Container(
-                        margin: EdgeInsets.only(top: 30),
+                        margin: EdgeInsets.only(top: 5),
                         child: Align(
                           alignment: Alignment.bottomRight,
                           child: SizedBox(
@@ -169,7 +171,7 @@ class FirstWidget extends StatelessWidget {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => LoginPage()));
+                                        builder: (context) => SignUpPage()));
                                 // }
                               },
                               shape: RoundedRectangleBorder(
@@ -190,28 +192,14 @@ class FirstWidget extends StatelessWidget {
                           ),
                         ),
                       ),
-                      // Container(
-                      //   margin:
-                      //       EdgeInsets.only(right: 30, bottom: 30, top: 100),
-                      //   child: Align(
-                      //     alignment: Alignment.bottomRight,
-                      //     child: Text(
-                      //       "Sign Up",
-                      //       style: TextStyle(
-                      //           color: Colors.indigoAccent, fontSize: 20),
-                      //     ),
-                      //   ),
-                      // ),
                     ],
                   ),
                 ],
               ),
             ),
           ),
-        ),
+     //   ),
       ),
     );
   }
 }
-
- 

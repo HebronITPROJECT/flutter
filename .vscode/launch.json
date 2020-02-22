@@ -8,12 +8,14 @@
             "name": "Dart",
             "type": "dart",
             "request": "launch",
-            "program": "bin/main.dart"
+            "program": "lib/main.dart"
         },
-        {
-            "name": "Flutter",
-            "request": "launch",
-            "type": "dart"
-        }
+        // {
+        //     "name": "Dart",
+        //     "type": "dart",
+        //     "request": "launch",
+        //     "program": "bin/main.dart"
+        // },
+        
     ]
 }

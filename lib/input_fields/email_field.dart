@@ -27,13 +27,13 @@ class _EmailFieldState extends State<EmailField> {
                 borderSide: BorderSide(color:Colors.red)
               )
             ),
-            // validator: (String value) {
-            //   if (!value.contains("@gmail.com")) {
-            //     return "Ви не ввели E-mail!";
-            //   } else {
-            //     return null;
-            //   }
-            // },
+            validator: (String value) {
+              if (!value.contains("@gmail.com")) {
+                return "Ви не ввели E-mail!";
+              } else {
+                return null;
+              }
+            },
             onSaved: (String value) {
               _email = value;
               print(_email);
