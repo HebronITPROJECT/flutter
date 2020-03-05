@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:virtual_app/input_fields/pin_field.dart';
+import 'package:virtual_app/layouts/shared_widgets/buttons/sign_up_button.dart';
+import 'package:virtual_app/layouts/side_bar/side_bar_layout.dart';
+import 'package:virtual_app/pages/home_page.dart';
 import 'input_fields/email_field.dart';
 import 'input_fields/name_field.dart';
 import 'input_fields/phone_number.dart';
+import 'input_fields/pin_field.dart';
+
 
 class SignUpPage extends StatefulWidget {
   SignUpPage({Key key}) : super(key: key);
@@ -31,7 +37,6 @@ class _SignUpPageState extends State<SignUpPage> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   Container(
-
                     margin: EdgeInsets.only(top: 40, left: 10),
                     alignment: Alignment.bottomLeft,
                     child: FlatButton(
@@ -42,8 +47,9 @@ class _SignUpPageState extends State<SignUpPage> {
                           color: Colors.white, size: 40.0),
                     ),
                   ),
+                  Spacer(),
                   Container(
-                    padding: EdgeInsets.only(left: 40, right: 40, top: 88),
+                    padding: EdgeInsets.only(left:  40, right: 40, ),
                     child: Column(
                       children: <Widget>[
                         Container(
@@ -80,7 +86,7 @@ class _SignUpPageState extends State<SignUpPage> {
                           borderRadius: BorderRadius.circular(20),
                           color: Colors.indigoAccent),
                       padding: EdgeInsets.only(left: 20, right: 20),
-                      height: 200,
+                      height: 250,
                       child: Column(
                         children: <Widget>[
                           NameField(),
@@ -101,47 +107,18 @@ class _SignUpPageState extends State<SignUpPage> {
                             height: 1,
                             color: Colors.white,
                           ),
+                          PinField(),
+                          Container(height: 1, color: Colors.white),
+                          Container(
+                            height: 1,
+                            color: Colors.white,
+                          ),
                         ],
                       ),
                     ),
                   ),
-                   Container(
-                        margin: EdgeInsets.only(top: 95),
-                        child: Align(
-                          alignment: Alignment.bottomRight,
-                          child: SizedBox(
-                            width: 200,
-                            height: 110,
-                            child: RaisedButton(
-                              color: Colors.white,
-                              onPressed: () {
-                                // if (!_emailKey.currentState.validate()) {
-                                //   print("object");
-                                // } else {
-                                // Navigator.push(
-                                //     context,
-                                //     MaterialPageRoute(
-                                //         builder: (context) => SignUpPage()));
-                                // }
-                              },
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(90),
-                                  bottomLeft: Radius.circular(90),
-                                ),
-                              ),
-                              child: Text(
-                                "SIGN UP",
-                                style: TextStyle(
-                                  color: Colors.indigoAccent,
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 20,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
+                  Spacer(),
+                  signUpButton(context,HomePage()),
                 ],
               ),
             ),

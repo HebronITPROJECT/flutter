@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:virtual_app/layouts/shared_widgets/buttons/sign_in_button.dart';
+import 'package:virtual_app/layouts/side_bar/side_bar_layout.dart';
+import 'package:virtual_app/pages/home_page.dart';
 import 'package:virtual_app/sign_up.dart';
+import 'package:virtual_app/utils/screen_aware_size.dart';
 import 'input_fields/email_field.dart';
 
 class SignInPage extends StatefulWidget {
@@ -33,19 +37,25 @@ class _SignInPageState extends State<SignInPage> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
+                    Spacer(),
                     Container(
-                      margin: EdgeInsets.only(top: 48, left: 10),
+                      margin: EdgeInsets.only(
+                          left: screenAwareSize(10, context)),
                       alignment: Alignment.bottomLeft,
                       child: FlatButton(
                         onPressed: () {
                           Navigator.of(context).pop();
                         },
                         child: Icon(Icons.arrow_back,
-                            color: Colors.white, size: 40.0),
+                            color: Colors.white,
+                            size: screenAwareSize(40, context)),
                       ),
                     ),
+                    Spacer(),
                     Container(
-                      padding: EdgeInsets.only(left: 40, right: 40, top: 88),
+                      padding: EdgeInsets.symmetric(
+                        horizontal: screenAwareSize(40, context),
+                      ),
                       child: Column(
                         children: <Widget>[
                           Container(
@@ -55,11 +65,11 @@ class _SignInPageState extends State<SignInPage> {
                               style: TextStyle(
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold,
-                                  fontSize: 50),
+                                  fontSize: screenAwareSize(50, context)),
                             ),
                           ),
-                          Container(
-                            height: 10,
+                          SizedBox(
+                            height: screenAwareSize(10, context),
                           ),
                           Container(
                             alignment: FractionalOffset(0.0, 0.0),
@@ -68,7 +78,7 @@ class _SignInPageState extends State<SignInPage> {
                               style: TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.normal,
-                                fontSize: 15,
+                                fontSize: screenAwareSize(15, context),
                               ),
                             ),
                           ),
@@ -78,19 +88,24 @@ class _SignInPageState extends State<SignInPage> {
                     Container(
                       child: Container(
                         margin: EdgeInsets.only(
-                            left: 40, right: 40, top: 40, bottom: 20),
+                            left: screenAwareSize(40, context),
+                            right: screenAwareSize(40, context),
+                            top: screenAwareSize(40, context),
+                            bottom: screenAwareSize(20, context)),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(20),
                             color: Colors.indigoAccent),
-                        padding: EdgeInsets.only(left: 20, right: 20),
-                        height: 160,
+                        padding: EdgeInsets.symmetric(horizontal: screenAwareSize(20, context)),
+                        height: screenAwareSize(150, context),
                         child: Column(
                           children: <Widget>[
                             EmailField(),
-                            Container(height: 1, color: Colors.white),
+                            Container(
+                                height: screenAwareSize(1, context),
+                                color: Colors.white),
                             inputField("PASSWORD", Icons.lock),
                             Container(
-                              height: 1,
+                              height: screenAwareSize(1, context),
                               color: Colors.white,
                             ),
                           ],
@@ -98,60 +113,23 @@ class _SignInPageState extends State<SignInPage> {
                       ),
                     ),
                     Container(
-                      padding: EdgeInsets.only(left: 40, right: 40),
+                      padding: EdgeInsets.symmetric(horizontal: screenAwareSize(40, context)),
                       alignment: FractionalOffset(0.0, 0.0),
                       child: Text(
                         "Forgot Password?",
                         style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.normal,
-                            fontSize: 15),
+                            fontSize:screenAwareSize(15, context)),
                       ),
                     ),
-                    Container(
-                      margin: EdgeInsets.only(top: 30),
-                      child: Align(
-                        alignment: Alignment.bottomLeft,
-                        child: SizedBox(
-                          width: 200,
-                          height: 110,
-                          child: RaisedButton(
-                            color: Colors.white,
-                            onPressed: () {
-                              if (!_emailKey.currentState.validate()) {
-                                print("object");
-                              } else {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => SignInPage()));
-                              }
-                            },
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.only(
-                                topRight: Radius.circular(90),
-                                bottomRight: Radius.circular(90),
-                              ),
-                            ),
-                            child: Text(
-                              "SIGN IN",
-                              style: TextStyle(
-                                color: Colors.indigoAccent,
-                                fontWeight: FontWeight.w600,
-                                fontSize: 20,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
+                    signInButton(context,Colors.white,Colors.indigoAccent,HomePage(),""),
                     Container(
                       height: 50,
                       margin: EdgeInsets.only(bottom: 20, top: 60),
                       child: Align(
                         alignment: Alignment.bottomCenter,
-                        child:
-                            FlatButton(
+                        child: FlatButton(
                           onPressed: () {
                             Navigator.push(
                                 context,
@@ -179,11 +157,14 @@ class _SignInPageState extends State<SignInPage> {
     );
   }
 
-  TextFormField inputField(text, icoN) {
+
+
+  TextFormField inputField(text, icon) {
     return TextFormField(
+      obscureText: true,
       style: TextStyle(color: Colors.white, fontWeight: FontWeight.normal),
       decoration: InputDecoration(
-        icon: Icon(icoN, size: 25, color: Colors.white),
+        icon: Icon(icon, size: 25, color: Colors.white),
         labelText: text,
         labelStyle: TextStyle(color: Colors.white),
         border: InputBorder.none,
