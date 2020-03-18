@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class EmailField extends StatefulWidget {
   @override
   _EmailFieldState createState() => _EmailFieldState();
@@ -9,6 +8,7 @@ class EmailField extends StatefulWidget {
 class _EmailFieldState extends State<EmailField> {
   String _email;
   final _emailKey = GlobalKey<FormState>();
+  bool _pressed = true;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -19,25 +19,29 @@ class _EmailFieldState extends State<EmailField> {
             style:
                 TextStyle(color: Colors.white, fontWeight: FontWeight.normal),
             decoration: InputDecoration(
-              icon: Icon(Icons.mail, size: 25, color: Colors.white),
+              icon: Icon(Icons.mail,
+                  size: 25, color: _pressed ? Colors.white : Colors.red),
               labelText: "EMAIL",
-              labelStyle: TextStyle(color: Colors.white),
+              labelStyle: _pressed
+                  ? TextStyle(color: Colors.white)
+                  : TextStyle(color: Colors.red),
               border: InputBorder.none,
-              errorStyle: TextStyle(color: Colors.red[600]),
-              errorBorder: OutlineInputBorder(
-                borderSide: BorderSide(color:Colors.red)
-              )
+              errorStyle: TextStyle(color: Colors.red),
             ),
-            validator: (String value) {
+            validator: (value) {
               if (!value.contains("@gmail.com")) {
-                return "Ви не ввели E-mail!";
+                // return "Ви не ввели E-mail!";
+                setState(() {
+                  _pressed = !_pressed;
+                });
+                return;
               } else {
+                print("E-mail:$value");
                 return null;
               }
             },
             onSaved: (String value) {
               _email = value;
-              print(_email);
             },
           ),
         ),

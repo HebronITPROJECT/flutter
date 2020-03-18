@@ -3,11 +3,11 @@ import 'package:virtual_app/input_fields/pin_field.dart';
 import 'package:virtual_app/layouts/shared_widgets/buttons/sign_up_button.dart';
 import 'package:virtual_app/layouts/side_bar/side_bar_layout.dart';
 import 'package:virtual_app/pages/home_page.dart';
+import 'package:virtual_app/utils/screen_aware_size.dart';
 import 'input_fields/email_field.dart';
 import 'input_fields/name_field.dart';
 import 'input_fields/phone_number.dart';
 import 'input_fields/pin_field.dart';
-
 
 class SignUpPage extends StatefulWidget {
   SignUpPage({Key key}) : super(key: key);
@@ -49,7 +49,10 @@ class _SignUpPageState extends State<SignUpPage> {
                   ),
                   Spacer(),
                   Container(
-                    padding: EdgeInsets.only(left:  40, right: 40, ),
+                    padding: EdgeInsets.only(
+                      left: 40,
+                      right: 40,
+                    ),
                     child: Column(
                       children: <Widget>[
                         Container(
@@ -90,19 +93,19 @@ class _SignUpPageState extends State<SignUpPage> {
                       child: Column(
                         children: <Widget>[
                           NameField(),
-                          Container(height: 1, color: Colors.white),
+                          Container(height:screenAwareSize(1, context) , color: Colors.white),
                           Container(
                             height: 1,
                             color: Colors.white,
                           ),
                           EmailField(),
-                          Container(height: 1, color: Colors.white),
+                          Container(height:screenAwareSize(1, context) , color: Colors.white),
                           Container(
                             height: 1,
                             color: Colors.white,
                           ),
                           PhoneNumberField(),
-                          Container(height: 1, color: Colors.white),
+                          Container(height:screenAwareSize(1, context) , color: Colors.white),
                           Container(
                             height: 1,
                             color: Colors.white,
@@ -118,7 +121,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     ),
                   ),
                   Spacer(),
-                  signUpButton(context,HomePage()),
+                  signUpButton(context, HomePage()),
                 ],
               ),
             ),
